@@ -1,2 +1,41 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+/* Paleta de colores personalizada (rosa) */
+:root {
+  /* Primary - Rosa intenso */
+  --ion-color-primary: #e91e63;
+  --ion-color-primary-rgb: 233, 30, 99;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #cd1856;
+  --ion-color-primary-tint: #ee407b;
+
+  /* Secondary - Rosa claro */
+  --ion-color-secondary: #f48fb1;
+  --ion-color-secondary-rgb: 244, 143, 177;
+  --ion-color-secondary-contrast: #3a3a3a;
+  --ion-color-secondary-contrast-rgb: 58, 58, 58;
+  --ion-color-secondary-shade: #d57e9c;
+  --ion-color-secondary-tint: #f6a2bf;
+
+  /* Tertiary - Magenta suave */
+  --ion-color-tertiary: #ad1457;
+  --ion-color-tertiary-rgb: 173, 20, 87;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #96114c;
+  --ion-color-tertiary-tint: #b8326c;
+
+  /* Fondo y texto por defecto (claro) */
+  --ion-background-color: #fff5f9; /* rosado muy suave */
+  --ion-text-color: #2c3e50;
+}
+
+/* Modo oscuro opcional: conserva el rosa como primario */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #121218;
+    --ion-text-color: #f6f6f6;
+  }
+}
