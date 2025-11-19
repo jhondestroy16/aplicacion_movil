@@ -1,41 +1,136 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
 
-/* Paleta de colores personalizada (rosa) */
+/* ==========================================
+   🎨 SISTEMA DE COLORES MEJORADO
+   ========================================== */
+
 :root {
-  /* Primary - Rosa intenso */
-  --ion-color-primary: #e91e63;
-  --ion-color-primary-rgb: 233, 30, 99;
+  /* Primary - Rosa intenso vibrante */
+  --ion-color-primary: #ff1867;
+  --ion-color-primary-rgb: 255, 24, 103;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #cd1856;
-  --ion-color-primary-tint: #ee407b;
+  --ion-color-primary-shade: #e0155b;
+  --ion-color-primary-tint: #ff3079;
 
-  /* Secondary - Rosa claro */
-  --ion-color-secondary: #f48fb1;
-  --ion-color-secondary-rgb: 244, 143, 177;
-  --ion-color-secondary-contrast: #3a3a3a;
-  --ion-color-secondary-contrast-rgb: 58, 58, 58;
-  --ion-color-secondary-shade: #d57e9c;
-  --ion-color-secondary-tint: #f6a2bf;
+  /* Secondary - Rosa coral */
+  --ion-color-secondary: #ff6b9d;
+  --ion-color-secondary-rgb: 255, 107, 157;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #e05e8a;
+  --ion-color-secondary-tint: #ff7aa7;
 
-  /* Tertiary - Magenta suave */
-  --ion-color-tertiary: #ad1457;
-  --ion-color-tertiary-rgb: 173, 20, 87;
+  /* Tertiary - Magenta profundo */
+  --ion-color-tertiary: #c2185b;
+  --ion-color-tertiary-rgb: 194, 24, 91;
   --ion-color-tertiary-contrast: #ffffff;
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-  --ion-color-tertiary-shade: #96114c;
-  --ion-color-tertiary-tint: #b8326c;
+  --ion-color-tertiary-shade: #ab1550;
+  --ion-color-tertiary-tint: #c82f6b;
 
-  /* Fondo y texto por defecto (claro) */
-  --ion-background-color: #fff5f9; /* rosado muy suave */
+  /* Success - Rosa suave con toque verde */
+  --ion-color-success: #ff9eb7;
+  --ion-color-success-rgb: 255, 158, 183;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-shade: #e08ba1;
+  --ion-color-success-tint: #ffa8be;
+
+  /* ==========================================
+     🌈 GRADIENTES MODERNOS
+     ========================================== */
+  
+  /* Gradiente principal romántico */
+  --gradient-romantic: linear-gradient(135deg, #ff1867 0%, #ff6b9d 50%, #ffa8c5 100%);
+  --gradient-romantic-reverse: linear-gradient(135deg, #ffa8c5 0%, #ff6b9d 50%, #ff1867 100%);
+  
+  /* Gradiente vibrante para botones */
+  --gradient-vibrant: linear-gradient(135deg, #ff1867 0%, #c2185b 100%);
+  
+  /* Gradiente suave para fondos */
+  --gradient-soft: linear-gradient(180deg, #fff5f9 0%, #ffe8f0 100%);
+  
+  /* Gradiente para cards */
+  --gradient-card: linear-gradient(135deg, rgba(255, 24, 103, 0.05) 0%, rgba(255, 107, 157, 0.1) 100%);
+  
+  /* Gradiente animado (para keyframes) */
+  --gradient-animated: linear-gradient(45deg, #ff1867, #ff6b9d, #ffa8c5, #ff6b9d, #ff1867);
+
+  /* ==========================================
+     ✨ SISTEMA DE SOMBRAS
+     ========================================== */
+  
+  /* Sombras con color */
+  --shadow-sm: 0 2px 8px rgba(255, 24, 103, 0.15);
+  --shadow-md: 0 4px 16px rgba(255, 24, 103, 0.2);
+  --shadow-lg: 0 8px 32px rgba(255, 24, 103, 0.25);
+  --shadow-xl: 0 12px 48px rgba(255, 24, 103, 0.3);
+  
+  /* Sombras para glassmorphism */
+  --shadow-glass: 0 8px 32px 0 rgba(255, 107, 157, 0.2);
+  
+  /* Glow effects */
+  --glow-primary: 0 0 20px rgba(255, 24, 103, 0.5);
+  --glow-secondary: 0 0 30px rgba(255, 107, 157, 0.6);
+
+  /* ==========================================
+     🎭 GLASSMORPHISM
+     ========================================== */
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: blur(20px);
+
+  /* ==========================================
+     🎨 FONDOS Y TEXTOS
+     ========================================== */
+  
+  /* Fondo con gradiente sutil */
+  --ion-background-color: #fff5f9;
+  --ion-background-gradient: linear-gradient(180deg, #fff5f9 0%, #ffe8f0 50%, #ffd9e5 100%);
   --ion-text-color: #2c3e50;
+  --ion-text-color-light: #6c7a89;
+
+  /* ==========================================
+     📏 ESPACIADO Y BORDES
+     ========================================== */
+  
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --border-radius-full: 9999px;
 }
 
-/* Modo oscuro opcional: conserva el rosa como primario */
+/* ==========================================
+   🌙 MODO OSCURO
+   ========================================== */
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --ion-background-color: #121218;
-    --ion-text-color: #f6f6f6;
+    /* Colores ajustados para dark mode */
+    --ion-color-primary: #ff4d8f;
+    --ion-color-primary-shade: #e04480;
+    
+    /* Fondos oscuros con toque romántico */
+    --ion-background-color: #0f0a0d;
+    --ion-background-gradient: linear-gradient(180deg, #0f0a0d 0%, #1a0f15 50%, #25141d 100%);
+    --ion-text-color: #f8f8f8;
+    --ion-text-color-light: #b4b4b4;
+    
+    /* Gradientes ajustados */
+    --gradient-soft: linear-gradient(180deg, #1a0f15 0%, #25141d 100%);
+    --gradient-card: linear-gradient(135deg, rgba(255, 77, 143, 0.1) 0%, rgba(255, 107, 157, 0.15) 100%);
+    
+    /* Glassmorphism dark */
+    --glass-bg: rgba(31, 31, 31, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    /* Sombras oscuras */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.7);
   }
 }

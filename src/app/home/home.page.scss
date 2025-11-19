@@ -1,114 +1,182 @@
-/* Estilos para la galería */
+/* ==========================================
+   📸 GALERÍA MODERNA
+   ========================================== */
+
 .gallery-container {
   padding: 20px;
+  position: relative;
 }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 24px;
   margin-top: 20px;
 }
 
 .gallery-item {
   position: relative;
-  border-radius: 12px;
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  
+  background: white;
+
+  /* Animación de entrada escalonada */
+  animation: fadeInUp 0.6s ease-out backwards;
+
+  @for $i from 1 through 20 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+
     .overlay {
       opacity: 1;
     }
+
+    .photo-caption {
+      background: var(--gradient-vibrant);
+      color: white;
+    }
+  }
+
+  &:active {
+    transform: translateY(-8px) scale(1.01);
   }
 }
 
 .image-container {
   position: relative;
-  padding-top: 100%; /* Relación de aspecto 1:1 */
+  padding-top: 100%;
   overflow: hidden;
-  
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+
   img {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   &:hover img {
-    transform: scale(1.05);
+    transform: scale(1.15) rotate(2deg);
+    filter: brightness(1.1);
   }
 }
 
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 24, 103, 0.85), rgba(194, 24, 91, 0.9));
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  
+  transition: opacity 0.4s;
+  backdrop-filter: blur(4px);
+
   ion-icon {
     color: white;
-    font-size: 2.5rem;
+    font-size: 3rem;
+    animation: scalePulse 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
   }
 }
 
 .photo-caption {
-  padding: 12px;
+  padding: 16px;
   text-align: center;
-  font-weight: 500;
-  color: var(--ion-color-dark);
-  background: white;
-  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s;
 }
 
-/* Estilos para el modal */
+/* ==========================================
+   🖼️ MODAL MEJORADO
+   ========================================== */
+
+ion-modal {
+  --background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+
+  ion-toolbar {
+    --background: transparent;
+
+    ion-title {
+      color: white;
+    }
+
+    ion-button {
+      --color: white;
+    }
+  }
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 20px;
+}
+
 .full-image {
   width: 100%;
   max-height: 60vh;
   object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  border-radius: var(--border-radius-lg);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-xl);
+  animation: fadeInUp 0.5s ease-out;
 }
 
 .photo-description {
   text-align: center;
-  color: var(--ion-color-medium);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 20px;
+  line-height: 1.6;
+  max-width: 600px;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .navigation-buttons {
   display: flex;
-  justify-content: space-between;
+  gap: 16px;
   margin-top: 20px;
-  
+  animation: fadeInUp 0.7s ease-out;
+
   ion-button {
-    --padding-start: 8px;
-    --padding-end: 8px;
+    --background: var(--gradient-vibrant);
+    --border-radius: var(--border-radius-full);
+    --box-shadow: var(--shadow-md);
+    font-weight: 600;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:disabled {
+      opacity: 0.3;
+    }
   }
 }
 
-/* Estilos para la animación de flores */
+/* ==========================================
+   🌸 ANIMACIÓN DE FLORES MEJORADA
+   ========================================== */
+
 .flower-animation {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
   z-index: 1000;
   overflow: hidden;
@@ -116,45 +184,44 @@
 
 .flower {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  pointer-events: none;
+  width: 50px;
+  height: 50px;
   animation: falling linear forwards;
-  animation-iteration-count: 1;
   opacity: 0;
-  transform: translateY(-100%);
-  
+  filter: drop-shadow(0 2px 8px rgba(255, 24, 103, 0.4));
+
   .petals {
     position: absolute;
     width: 100%;
     height: 100%;
-    animation: rotating 4s linear infinite;
+    animation: rotateSmooth 3s linear infinite;
   }
-  
+
   .petal {
     position: absolute;
-    width: 15px;
-    height: 15px;
-    background: #ff69b4;
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, #ff6b9d, #ff1867);
     border-radius: 50% 0 50% 50%;
-    transform-origin: center;
-    
-    &:nth-child(1) { transform: rotate(0deg) translateX(20px); }
-    &:nth-child(2) { transform: rotate(72deg) translateX(20px); }
-    &:nth-child(3) { transform: rotate(144deg) translateX(20px); }
-    &:nth-child(4) { transform: rotate(216deg) translateX(20px); }
-    &:nth-child(5) { transform: rotate(288deg) translateX(20px); }
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        transform: rotate(#{($i - 1) * 72}deg) translateX(22px);
+      }
+    }
   }
-  
+
   .center {
     position: absolute;
-    width: 12px;
-    height: 12px;
-    background: #ffd700;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle, #ffd700, #ffb700);
     border-radius: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -163,94 +230,215 @@
     transform: translateY(-100%) rotate(0deg);
     opacity: 1;
   }
+
   100% {
-    transform: translateY(100vh) rotate(360deg);
+    transform: translateY(100vh) rotate(720deg);
     opacity: 0;
   }
 }
 
-@keyframes rotating {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* ==========================================
+   💖 BOTÓN DE CORAZÓN MEJORADO
+   ========================================== */
 
-/* Estilos para el botón de corazón */
 .heart-container {
   position: fixed;
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
-  
+
   .heart-button {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    background: var(--ion-color-primary);
+    background: var(--gradient-vibrant);
+    background-size: 200%;
     border: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-lg);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
-    
-    &:active {
-      transform: translateY(2px) scale(0.95);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    animation: pulseGlow 2s ease-in-out infinite;
+
+    /* Borde con gradiente */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      padding: 3px;
+      background: var(--gradient-romantic);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0.6;
+      animation: rotateSmooth 3s linear infinite;
     }
-    
+
+    &:hover {
+      transform: scale(1.15);
+      box-shadow: var(--shadow-xl), var(--glow-primary);
+      background-position: 100% 50%;
+    }
+
+    &:active {
+      transform: scale(1.05);
+    }
+
     .heart-icon {
       color: white;
-      font-size: 2rem;
+      font-size: 2.2rem;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     }
   }
 }
 
-/* Mensaje especial */
+/* ==========================================
+   💝 TARJETA DE MENSAJE ESPECIAL
+   ========================================== */
+
 .special-message {
-  margin: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  
+  margin: 20px 16px;
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out;
+  position: relative;
+
+  /* Efecto glassmorphism */
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-glass), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+
+  /* Borde con gradiente */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius-xl);
+    padding: 2px;
+    background: var(--gradient-romantic);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0.5;
+  }
+
   ion-card-header {
-    padding-bottom: 8px;
+    padding: 20px 20px 12px;
+    position: relative;
+    z-index: 1;
   }
-  
+
   ion-card-title {
-    color: var(--ion-color-primary);
-    font-weight: 600;
+    background: var(--gradient-romantic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    font-size: 1.4rem;
   }
-  
+
   ion-card-subtitle {
-    color: var(--ion-color-medium);
+    color: var(--ion-text-color-light);
+    font-weight: 500;
+    font-size: 0.95rem;
   }
-  
-  p {
-    margin: 0;
-    line-height: 1.6;
-    color: var(--ion-color-dark);
+
+  ion-card-content {
+    position: relative;
+    z-index: 1;
+
+    p {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--ion-text-color);
+      font-size: 1rem;
+      text-align: justify;
+    }
   }
 }
 
-/* Títulos */
+/* ==========================================
+   📝 ENCABEZADOS
+   ========================================== */
+
 .header {
   text-align: center;
-  margin: 30px 0;
-  
+  margin: 40px 20px 30px;
+  animation: fadeInUp 0.6s ease-out;
+  position: relative;
+
   h1 {
-    color: var(--ion-color-primary);
-    margin: 0 0 10px 0;
-    font-size: 1.8rem;
+    margin: 0 0 12px;
+    font-size: 2rem;
+    background: var(--gradient-romantic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+
+    /* Sombra sutil al texto */
+    filter: drop-shadow(0 2px 4px rgba(255, 24, 103, 0.1));
   }
-  
+
   p {
-    color: var(--ion-color-medium);
+    color: var(--ion-text-color-light);
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+}
+
+/* ==========================================
+   🎨 TOOLBAR CON GRADIENTE
+   ========================================== */
+
+ion-toolbar {
+  --background: var(--gradient-vibrant);
+  --color: white;
+
+  ion-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  ion-menu-button,
+  ion-button {
+    --color: white;
+  }
+}
+
+/* ==========================================
+   📱 RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  .heart-button {
+    width: 60px;
+    height: 60px;
+
+    .heart-icon {
+      font-size: 1.8rem;
+    }
   }
 }
